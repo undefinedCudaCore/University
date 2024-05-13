@@ -11,10 +11,12 @@
         public string StudentGender { get; set; }
 
         public int? DepartmentId { get; set; }
-        public IList<Department> Departments { get; set; }
+        //public IList<Department> Departments { get; set; } = new List<Department>();
 
         public int? LectureId { get; set; }
-        public Lecture Lecture { get; set; }
-        public IList<Lecture> Lectures { get; set; }
+        //public Lecture Lecture { get; set; }
+        //public IList<Lecture> Lectures { get; set; } = new List<Lecture>();
+
+        public IList<LectureStudent> LectureStudents { get; set; } = new List<LectureStudent>();
     }
 }

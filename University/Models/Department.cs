@@ -6,10 +6,12 @@
         public string DepartmentName { get; set; }
 
         public int? LectureId { get; set; }
-        public Lecture Lecture { get; set; }
-        public IList<Lecture> Lectures { get; set; }
+        //public Lecture Lecture { get; set; }
+        //public IList<Lecture> Lectures { get; set; } = new List<Lecture>();
 
         public int? StudentId { get; set; }
-        public Student Student { get; set; }
+        //public Student Student { get; set; }
+
+        public IList<DepartmentLecture> DepartmentLectures { get; set; } = new List<DepartmentLecture>();
     }
 }
