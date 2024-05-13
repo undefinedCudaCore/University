@@ -11,7 +11,7 @@
         public string StudentGender { get; set; }
 
         public int? DepartmentId { get; set; }
-        public IList<Department> Departments { get; private set; }
-        public IList<Lecture> Lectures { get; private set; }
+        public IList<Department> Departments { get; set; }
+        public IList<Lecture> Lectures { get; set; }
     }
 }

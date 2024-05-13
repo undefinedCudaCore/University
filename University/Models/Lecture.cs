@@ -8,10 +8,10 @@
 
         public int? DepartmentId { get; set; }
         public Department Department { get; set; }
-        public IList<Department> Departments { get; private set; }
+        public IList<Department> Departments { get; set; }
 
         public int? StudentId { get; set; }
         public Student Student { get; set; }
-        public IList<Student> Students { get; private set; }
+        public IList<Student> Students { get; set; }
     }
 }
