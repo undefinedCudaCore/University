@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using University.Database.InitalData;
 using University.Models;
 
 namespace University.Database
@@ -53,9 +54,6 @@ namespace University.Database
                     .IsRequired()
                     .HasColumnType("text")
                     .HasColumnOrder(6);
-                entity.Property(s => s.DepartmentId)
-                    .IsRequired()
-                    .HasColumnOrder(7);
             });
 
             modelBuilder.Entity<Lecture>(entity =>
@@ -72,11 +70,7 @@ namespace University.Database
 
                 entity.Property(b => b.LectureName)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnOrder(1);
-                entity.Property(b => b.LectureGrade)
-                    .HasMaxLength(2)
-                    .HasColumnOrder(2);
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Department>(entity =>
@@ -123,6 +117,12 @@ namespace University.Database
                     .WithMany(a => a.LectureStudents)
                     .HasForeignKey(ab => ab.StudentId);
             });
+
+            modelBuilder.Entity<Department>().HasData(DepartmentData.DataSeed);
+            modelBuilder.Entity<Lecture>().HasData(LectureData.DataSeed);
+            modelBuilder.Entity<Student>().HasData(StudentData.DataSeed);
+            modelBuilder.Entity<DepartmentLecture>().HasData(DepartmentLectureData.DataSeed);
+            modelBuilder.Entity<LectureStudent>().HasData(LectureStudentData.DataSeed);
         }
     }
 }

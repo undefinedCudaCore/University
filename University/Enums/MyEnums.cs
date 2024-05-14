@@ -1,6 +1,6 @@
 ﻿namespace University.Enums
 {
-    internal static class Enum
+    internal static class MyEnums
     {
         public enum GenderEnum
         {

@@ -1,5 +1,8 @@
-﻿namespace University.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace University.Models
 {
+    [Table("Student")]
     internal class Student
     {
         public int StudentId { get; set; }
@@ -13,7 +16,7 @@
         public int? DepartmentId { get; set; }
         //public IList<Department> Departments { get; set; } = new List<Department>();
 
-        public int? LectureId { get; set; }
+        //public int? LectureId { get; set; }
         //public Lecture Lecture { get; set; }
         //public IList<Lecture> Lectures { get; set; } = new List<Lecture>();
 
