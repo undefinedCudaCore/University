@@ -6,6 +6,9 @@ namespace University.Services
 {
     internal class StudentService : IManageData, IMoveData
     {
+        private void Get(UniversityContext db)
+        {
+        }
         public void Create(UniversityContext db)
         {
             throw new NotImplementedException();

@@ -4,13 +4,17 @@ using University.Services.Interfaces;
 namespace University.Services
 {
     internal class DepartmentService : IManageData
+
     {
-        void IManageData.Create(UniversityContext db)
+        private void Get(UniversityContext db)
+        {
+        }
+        public void Create(UniversityContext db)
         {
             throw new NotImplementedException();
         }
 
-        void IManageData.Update(UniversityContext db)
+        public void Update(UniversityContext db)
         {
             throw new NotImplementedException();
         }
