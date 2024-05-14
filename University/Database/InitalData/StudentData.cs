@@ -89,11 +89,11 @@ namespace University.Database.InitalData
                 StudentId = 8,
                 StudentName = "Ashlun",
                 StudentLastname = "Cyprus",
-                StudentAge = -22,
-                StudentHeight = -2,
-                StudentWeight = -100,
+                StudentAge = 22,
+                StudentHeight = 2,
+                StudentWeight = 100,
                 StudentGender = MyEnums.GenderEnum.Other.ToString(),
-                DepartmentId = 585
+                DepartmentId = 1
             }
         };
     }

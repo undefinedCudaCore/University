@@ -16,6 +16,8 @@ namespace University.Models
         //public int? StudentId { get; set; }
         //public Student Student { get; set; }
 
+        public IList<Student> Students { get; set; } = new List<Student>();
+
         public IList<DepartmentLecture> DepartmentLectures { get; set; } = new List<DepartmentLecture>();
     }
 }

@@ -278,6 +278,8 @@ namespace University.Migrations
 
                     b.HasKey("StudentId");
 
+                    b.HasIndex("DepartmentId");
+
                     b.ToTable("Student");
 
                     b.HasData(
@@ -361,13 +363,13 @@ namespace University.Migrations
                         new
                         {
                             StudentId = 8,
-                            DepartmentId = 585,
-                            StudentAge = -22L,
+                            DepartmentId = 1,
+                            StudentAge = 22L,
                             StudentGender = "Other",
-                            StudentHeight = -2m,
+                            StudentHeight = 2m,
                             StudentLastname = "Cyprus",
                             StudentName = "Ashlun",
-                            StudentWeight = -100m
+                            StudentWeight = 100m
                         });
                 });
 
@@ -409,9 +411,20 @@ namespace University.Migrations
                     b.Navigation("Student");
                 });
 
+            modelBuilder.Entity("University.Models.Student", b =>
+                {
+                    b.HasOne("University.Models.Department", "Department")
+                        .WithMany("Students")
+                        .HasForeignKey("DepartmentId");
+
+                    b.Navigation("Department");
+                });
+
             modelBuilder.Entity("University.Models.Department", b =>
                 {
                     b.Navigation("DepartmentLectures");
+
+                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("University.Models.Lecture", b =>

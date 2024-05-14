@@ -1,6 +1,6 @@
 ﻿namespace University.Services.Interfaces
 {
-    public interface IDepartment
+    public interface IShowContent
     {
     }
 }
