@@ -1,4 +1,6 @@
 ﻿using University.Database;
+using University.Services;
+using University.Services.Interfaces;
 
 namespace University
 {
@@ -12,15 +14,8 @@ namespace University
 
                 while (true)
                 {
-                    Console.WriteLine("Please select action:");
-                    Console.WriteLine("1. Create department.");
-                    Console.WriteLine("2. Update book.");
-                    Console.WriteLine("3. Delete book.");
-                    Console.WriteLine("4. Create page in book.");
-                    Console.WriteLine("5. Read books and pages.");
-                    Console.WriteLine("6. Read books and pages.");
-                    Console.WriteLine("7. Read books and pages.");
-                    Console.WriteLine("8. Read books and pages.");
+                    IShowContent showContent = new ShowContentService();
+                    showContent.ShowMainMenu();
 
                     string option = Console.ReadLine();
 
