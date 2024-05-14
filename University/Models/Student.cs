@@ -14,6 +14,7 @@ namespace University.Models
         public string StudentGender { get; set; }
 
         public int? DepartmentId { get; set; }
+        public Department Department { get; set; }
         //public IList<Department> Departments { get; set; } = new List<Department>();
 
         //public int? LectureId { get; set; }

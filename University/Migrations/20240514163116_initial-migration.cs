@@ -7,7 +7,7 @@
 namespace University.Migrations
 {
     /// <inheritdoc />
-    public partial class Initialmigration : Migration
+    public partial class initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -55,6 +55,11 @@ namespace University.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Student", x => x.StudentId);
+                    table.ForeignKey(
+                        name: "FK_Student_Department_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalTable: "Department",
+                        principalColumn: "DepartmentId");
                 });
 
             migrationBuilder.CreateTable(
@@ -126,21 +131,6 @@ namespace University.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Student",
-                columns: new[] { "StudentId", "DepartmentId", "StudentAge", "StudentGender", "StudentHeight", "StudentLastname", "StudentName", "StudentWeight" },
-                values: new object[,]
-                {
-                    { 1, 2, 18L, "Male", 1.85m, "Matrix", "Ted", 90m },
-                    { 2, 2, 19L, "Male", 1.88m, "Collay", "Steve", 93.51m },
-                    { 3, 1, 55L, "Male", 1.73m, "Parry", "Mathew", 100.01m },
-                    { 4, 1, 18L, "Female", 1.69m, "Wanvooren", "Lisa", 52m },
-                    { 5, 2, 20L, "Female", 1.72m, "Wilde", "Olivia", 55m },
-                    { 6, 1, 25L, "Male", 2.01m, "Ogust", "Natan", 100.5m },
-                    { 7, 2, 65L, "Male", 1.88m, "Carrey", "Jim", 93m },
-                    { 8, 585, -22L, "Other", -2m, "Cyprus", "Ashlun", -100m }
-                });
-
-            migrationBuilder.InsertData(
                 table: "DepartmentLecture",
                 columns: new[] { "DepartmentId", "LectureId" },
                 values: new object[,]
@@ -153,6 +143,21 @@ namespace University.Migrations
                     { 2, 2 },
                     { 2, 3 },
                     { 2, 4 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Student",
+                columns: new[] { "StudentId", "DepartmentId", "StudentAge", "StudentGender", "StudentHeight", "StudentLastname", "StudentName", "StudentWeight" },
+                values: new object[,]
+                {
+                    { 1, 2, 18L, "Male", 1.85m, "Matrix", "Ted", 90m },
+                    { 2, 2, 19L, "Male", 1.88m, "Collay", "Steve", 93.51m },
+                    { 3, 1, 55L, "Male", 1.73m, "Parry", "Mathew", 100.01m },
+                    { 4, 1, 18L, "Female", 1.69m, "Wanvooren", "Lisa", 52m },
+                    { 5, 2, 20L, "Female", 1.72m, "Wilde", "Olivia", 55m },
+                    { 6, 1, 25L, "Male", 2.01m, "Ogust", "Natan", 100.5m },
+                    { 7, 2, 65L, "Male", 1.88m, "Carrey", "Jim", 93m },
+                    { 8, 1, 22L, "Other", 2m, "Cyprus", "Ashlun", 100m }
                 });
 
             migrationBuilder.InsertData(
@@ -185,6 +190,11 @@ namespace University.Migrations
                 name: "IX_LectureStudent_StudentId",
                 table: "LectureStudent",
                 column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Student_DepartmentId",
+                table: "Student",
+                column: "DepartmentId");
         }
 
         /// <inheritdoc />
@@ -197,13 +207,13 @@ namespace University.Migrations
                 name: "LectureStudent");
 
             migrationBuilder.DropTable(
-                name: "Department");
-
-            migrationBuilder.DropTable(
                 name: "Lecture");
 
             migrationBuilder.DropTable(
                 name: "Student");
+
+            migrationBuilder.DropTable(
+                name: "Department");
         }
     }
 }
