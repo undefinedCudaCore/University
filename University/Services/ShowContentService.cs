@@ -115,6 +115,22 @@ namespace University.Services
             Console.Clear();
             cycle = false;
 
+            var lectureStudents = db.LectureStudents
+                .Include(b => b.Student)
+                .Include(b => b.Lecture)
+                .Where(b => b.StudentId == studId)
+                .ToList();
+
+            Console.WriteLine($"Student ID: {lectureStudents[studId - 1].Student.StudentId}");
+            Console.WriteLine($"Student name: {lectureStudents[studId - 1].Student.StudentName}");
+            foreach (var ls in lectureStudents)
+            {
+                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine($"Lecture ID: {ls.Lecture.LectureId}");
+                Console.WriteLine($"Lecture Name: {ls.Lecture.LectureName}");
+                Console.WriteLine("---------------------------------------------------------");
+            }
+
             Console.WriteLine(DataContent.ErrorData.PressKeyToReturnToMainMenu);
             Console.ReadKey();
             RedirectTo.MainMenu();
