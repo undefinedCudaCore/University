@@ -8,13 +8,15 @@ namespace University.Database
     {
         public UniversityContext()
         {
-            ConnectionString = "Data Source=LENOVOY520\\SQLEXPRESS;Initial Catalog=UniversityDB;" +
+            ConnectionString = "Data Source=TEKLIANLI\\SQLEXPRESS;Initial Catalog=UniversityDB;" +
                 "Integrated Security=True;Encrypt=False";
         }
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Lecture> Lectures { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<DepartmentLecture> DepartmentLectures { get; set; }
+        public DbSet<LectureStudent> LectureStudents { get; set; }
         public string ConnectionString { get; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -12,8 +12,8 @@ using University.Database;
 namespace University.Migrations
 {
     [DbContext(typeof(UniversityContext))]
-    [Migration("20240514163116_initial-migration")]
-    partial class initialmigration
+    [Migration("20240515175813_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,7 +67,7 @@ namespace University.Migrations
 
                     b.HasIndex("LectureId");
 
-                    b.ToTable("DepartmentLecture");
+                    b.ToTable("DepartmentLectures");
 
                     b.HasData(
                         new
@@ -78,26 +78,6 @@ namespace University.Migrations
                         new
                         {
                             DepartmentId = 1,
-                            LectureId = 2
-                        },
-                        new
-                        {
-                            DepartmentId = 1,
-                            LectureId = 3
-                        },
-                        new
-                        {
-                            DepartmentId = 1,
-                            LectureId = 4
-                        },
-                        new
-                        {
-                            DepartmentId = 2,
-                            LectureId = 1
-                        },
-                        new
-                        {
-                            DepartmentId = 2,
                             LectureId = 2
                         },
                         new
@@ -164,7 +144,7 @@ namespace University.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("LectureStudent");
+                    b.ToTable("LectureStudents");
 
                     b.HasData(
                         new

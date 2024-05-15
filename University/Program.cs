@@ -1,4 +1,6 @@
-﻿using University.Database;
+﻿using University.Data;
+using University.Database;
+using University.Helpers;
 using University.Models;
 using University.Services;
 using University.Services.Interfaces;
@@ -9,10 +11,16 @@ namespace University
     {
         static void Main(string[] args)
         {
+            OutsetProgram();
+        }
+
+        internal static void OutsetProgram()
+        {
             using (var db = new UniversityContext())
             {
                 db.Database.EnsureCreated();
                 bool cycle = true;
+                int newInput;
 
                 while (cycle)
                 {
@@ -43,14 +51,19 @@ namespace University
                             studentServiceToMove.Move(db, new Student());
                             break;
                         case "6":
-                            var a = Convert.ToInt32(Console.ReadLine());
-                            showContent.ShowStudentsOfDepartment(db, a, out cycle);
+                            showContent.PrintContent(DataContent.ErrorData.EnterDepartmentId);
+                            CheckInputHelper.CheckInput(out newInput);
+                            showContent.ShowStudentsOfDepartment(db, newInput, out cycle);
                             break;
                         case "7":
-                            showContent.ShowLecturesOfDepartment(db, out cycle);
+                            showContent.PrintContent(DataContent.ErrorData.EnterDepartmentId);
+                            CheckInputHelper.CheckInput(out newInput);
+                            showContent.ShowLecturesOfDepartment(db, newInput, out cycle);
                             break;
                         case "8":
-                            showContent.ShowStudentLectures(db, out cycle);
+                            showContent.PrintContent(DataContent.ErrorData.EnterStudentId);
+                            CheckInputHelper.CheckInput(out newInput);
+                            showContent.ShowStudentLectures(db, newInput, out cycle);
                             break;
                         default:
                             break;

@@ -64,7 +64,7 @@ namespace University.Migrations
 
                     b.HasIndex("LectureId");
 
-                    b.ToTable("DepartmentLecture");
+                    b.ToTable("DepartmentLectures");
 
                     b.HasData(
                         new
@@ -75,26 +75,6 @@ namespace University.Migrations
                         new
                         {
                             DepartmentId = 1,
-                            LectureId = 2
-                        },
-                        new
-                        {
-                            DepartmentId = 1,
-                            LectureId = 3
-                        },
-                        new
-                        {
-                            DepartmentId = 1,
-                            LectureId = 4
-                        },
-                        new
-                        {
-                            DepartmentId = 2,
-                            LectureId = 1
-                        },
-                        new
-                        {
-                            DepartmentId = 2,
                             LectureId = 2
                         },
                         new
@@ -161,7 +141,7 @@ namespace University.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("LectureStudent");
+                    b.ToTable("LectureStudents");
 
                     b.HasData(
                         new
