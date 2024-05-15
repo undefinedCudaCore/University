@@ -1,4 +1,5 @@
 ﻿using University.Database;
+using University.Helpers;
 using University.Models;
 using University.Services;
 using University.Services.Interfaces;
@@ -48,8 +49,8 @@ namespace University
                             studentServiceToMove.Move(db, new Student());
                             break;
                         case "6":
-                            var a = Convert.ToInt32(Console.ReadLine());
-                            showContent.ShowStudentsOfDepartment(db, a, out cycle);
+                            CheckInputHelper.CheckInput(out int newInput);
+                            showContent.ShowStudentsOfDepartment(db, newInput, out cycle);
                             break;
                         case "7":
                             showContent.ShowLecturesOfDepartment(db, out cycle);

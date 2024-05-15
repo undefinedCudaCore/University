@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using University.Data;
 using University.Database;
+using University.Redirects;
 using University.Services.Interfaces;
 
 namespace University.Services
@@ -48,6 +50,9 @@ namespace University.Services
                 }
             }
 
+            Console.WriteLine(DataContent.ErrorData.PressKeyToReturnToMainMenu);
+            Console.ReadKey();
+            RedirectTo.MainMenu();
         }
 
         public void ShowLecturesOfDepartment(UniversityContext db, out bool cycle)
@@ -63,6 +68,11 @@ namespace University.Services
             Console.Clear();
             cycle = false;
 
+        }
+
+        public void PrintContent(string content)
+        {
+            Console.WriteLine(content);
         }
     }
 }

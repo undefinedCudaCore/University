@@ -8,5 +8,6 @@ namespace University.Services.Interfaces
         internal void ShowStudentsOfDepartment(UniversityContext db, int depId, out bool cycle);
         internal void ShowLecturesOfDepartment(UniversityContext db, out bool cycle);
         internal void ShowStudentLectures(UniversityContext db, out bool cycle);
+        public void PrintContent(string content);
     }
 }
