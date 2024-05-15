@@ -7,7 +7,7 @@
 namespace University.Migrations
 {
     /// <inheritdoc />
-    public partial class initialmigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -63,7 +63,7 @@ namespace University.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DepartmentLecture",
+                name: "DepartmentLectures",
                 columns: table => new
                 {
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
@@ -71,15 +71,15 @@ namespace University.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DepartmentLecture", x => new { x.DepartmentId, x.LectureId });
+                    table.PrimaryKey("PK_DepartmentLectures", x => new { x.DepartmentId, x.LectureId });
                     table.ForeignKey(
-                        name: "FK_DepartmentLecture_Department_DepartmentId",
+                        name: "FK_DepartmentLectures_Department_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Department",
                         principalColumn: "DepartmentId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DepartmentLecture_Lecture_LectureId",
+                        name: "FK_DepartmentLectures_Lecture_LectureId",
                         column: x => x.LectureId,
                         principalTable: "Lecture",
                         principalColumn: "LectureId",
@@ -87,7 +87,7 @@ namespace University.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LectureStudent",
+                name: "LectureStudents",
                 columns: table => new
                 {
                     LectureId = table.Column<int>(type: "int", nullable: false),
@@ -95,15 +95,15 @@ namespace University.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LectureStudent", x => new { x.LectureId, x.StudentId });
+                    table.PrimaryKey("PK_LectureStudents", x => new { x.LectureId, x.StudentId });
                     table.ForeignKey(
-                        name: "FK_LectureStudent_Lecture_LectureId",
+                        name: "FK_LectureStudents_Lecture_LectureId",
                         column: x => x.LectureId,
                         principalTable: "Lecture",
                         principalColumn: "LectureId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LectureStudent_Student_StudentId",
+                        name: "FK_LectureStudents_Student_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Student",
                         principalColumn: "StudentId",
@@ -131,16 +131,12 @@ namespace University.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "DepartmentLecture",
+                table: "DepartmentLectures",
                 columns: new[] { "DepartmentId", "LectureId" },
                 values: new object[,]
                 {
                     { 1, 1 },
                     { 1, 2 },
-                    { 1, 3 },
-                    { 1, 4 },
-                    { 2, 1 },
-                    { 2, 2 },
                     { 2, 3 },
                     { 2, 4 }
                 });
@@ -161,7 +157,7 @@ namespace University.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "LectureStudent",
+                table: "LectureStudents",
                 columns: new[] { "LectureId", "StudentId" },
                 values: new object[,]
                 {
@@ -182,13 +178,13 @@ namespace University.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_DepartmentLecture_LectureId",
-                table: "DepartmentLecture",
+                name: "IX_DepartmentLectures_LectureId",
+                table: "DepartmentLectures",
                 column: "LectureId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LectureStudent_StudentId",
-                table: "LectureStudent",
+                name: "IX_LectureStudents_StudentId",
+                table: "LectureStudents",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
@@ -201,10 +197,10 @@ namespace University.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "DepartmentLecture");
+                name: "DepartmentLectures");
 
             migrationBuilder.DropTable(
-                name: "LectureStudent");
+                name: "LectureStudents");
 
             migrationBuilder.DropTable(
                 name: "Lecture");

@@ -12,7 +12,7 @@ namespace University.Services
         {
             Console.Clear();
 
-            Console.WriteLine("Please select action:");
+            Console.WriteLine($"Please select action ({DataContent.ErrorData.EnterSelection}):");
             Console.WriteLine("1. Create department.");
             Console.WriteLine("2. Add student/lecture to department.");
             Console.WriteLine("3. Create a lecture.");
@@ -38,14 +38,15 @@ namespace University.Services
                 foreach (var student in item.Students)
                 {
                     Console.WriteLine("---------------------------------------------------------");
-                    Console.WriteLine(student.StudentId);
-                    Console.WriteLine(student.StudentName);
-                    Console.WriteLine(student.StudentLastname);
-                    Console.WriteLine(student.StudentAge);
-                    Console.WriteLine(student.StudentWeight);
-                    Console.WriteLine(student.StudentHeight);
-                    Console.WriteLine(student.StudentGender);
-                    Console.WriteLine(student.DepartmentId);
+                    Console.WriteLine("Students information: ");
+                    Console.WriteLine($"ID: {student.StudentId}");
+                    Console.WriteLine($"Name: {student.StudentName}");
+                    Console.WriteLine($"Lastname: {student.StudentLastname}");
+                    Console.WriteLine($"Age: {student.StudentAge}");
+                    Console.WriteLine($"Weight: {student.StudentWeight}");
+                    Console.WriteLine($"Height: {student.StudentHeight}");
+                    Console.WriteLine($"Gender: {student.StudentGender}");
+                    Console.WriteLine($"ID of the department to which the student belongs: {student.DepartmentId}");
                     Console.WriteLine("---------------------------------------------------------");
                 }
             }
@@ -55,19 +56,68 @@ namespace University.Services
             RedirectTo.MainMenu();
         }
 
-        public void ShowLecturesOfDepartment(UniversityContext db, out bool cycle)
+        public void ShowLecturesOfDepartment(UniversityContext db, int depId, out bool cycle)
         {
             Console.Clear();
             cycle = false;
 
-            Console.WriteLine("----------------------");
+            //var departments = db.Departments
+            //    .Include(b => b.DepartmentLectures)
+            //    .ThenInclude(ab => ab.Lecture)
+            //    .Where(b => b.DepartmentId == depId)
+            //    .ToList();
+
+            var departments4 = db.Departments
+                .Where(b => b.DepartmentId == depId)
+                .ToList();
+
+            var departments3 = db.DepartmentLectures
+                .Include(b => b.Lecture)
+                .Where(b => b.DepartmentId == depId)
+                .ToList();
+
+            //var departments2 = db.DepartmentLectures
+            //            .Where(dl => dl.DepartmentId == 2)
+            //            .Join(db.Lectures,
+            //                  dl => dl.LectureId,
+            //                  l => l.LectureId,
+            //                  (dl, l) => new
+            //                  {
+            //                      dl.DepartmentId,
+            //                      l.LectureName
+            //                  })
+            //            .Take(1000)
+            //            .ToList();
+
+            foreach (var department in departments3)
+            {
+                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine("Lecture information: ");
+                Console.WriteLine($"Lecture ID: {department.Lecture.LectureId}");
+                Console.WriteLine($"Lecture name: {department.Lecture.LectureName}");
+                Console.WriteLine($"Department ID: {department.DepartmentId}");
+
+                foreach (var department4 in departments4)
+                {
+                    Console.WriteLine($"Department name: {department4.DepartmentName}");
+                }
+
+                Console.WriteLine("---------------------------------------------------------");
+            }
+
+            Console.WriteLine(DataContent.ErrorData.PressKeyToReturnToMainMenu);
+            Console.ReadKey();
+            RedirectTo.MainMenu();
         }
 
-        public void ShowStudentLectures(UniversityContext db, out bool cycle)
+        public void ShowStudentLectures(UniversityContext db, int studId, out bool cycle)
         {
             Console.Clear();
             cycle = false;
 
+            Console.WriteLine(DataContent.ErrorData.PressKeyToReturnToMainMenu);
+            Console.ReadKey();
+            RedirectTo.MainMenu();
         }
 
         public void PrintContent(string content)

@@ -15,6 +15,8 @@ namespace University.Database
         public DbSet<Student> Students { get; set; }
         public DbSet<Lecture> Lectures { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<DepartmentLecture> DepartmentLectures { get; set; }
+        public DbSet<LectureStudent> LectureStudents { get; set; }
         public string ConnectionString { get; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
