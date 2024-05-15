@@ -8,7 +8,7 @@ namespace University.Database
     {
         public UniversityContext()
         {
-            ConnectionString = "Data Source=LENOVOY520\\SQLEXPRESS;Initial Catalog=UniversityDB;" +
+            ConnectionString = "Data Source=TEKLIANLI\\SQLEXPRESS;Initial Catalog=UniversityDB;" +
                 "Integrated Security=True;Encrypt=False";
         }
 

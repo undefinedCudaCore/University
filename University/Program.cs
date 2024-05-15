@@ -9,6 +9,11 @@ namespace University
     {
         static void Main(string[] args)
         {
+            OutsetProgram();
+        }
+
+        internal static void OutsetProgram()
+        {
             using (var db = new UniversityContext())
             {
                 db.Database.EnsureCreated();
