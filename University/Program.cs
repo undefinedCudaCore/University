@@ -39,16 +39,18 @@ namespace University
                             departmenService.Create(db);
                             break;
                         case "2":
+                            showContent.ShowAllDepartments(db);
                             departmenService.Update(db);
                             break;
                         case "3":
+                            showContent.ShowAllLectures(db);
                             lectureService.Create(db);
                             break;
                         case "4":
-                            studentService.Create(db);
+                            studentService.Create(db); // To do;
                             break;
                         case "5":
-                            studentService.Move(db, new Student(), 3);
+                            studentService.Move(db, new Student(), 3); // To do;
                             break;
                         case "6":
                             showContent.PrintContent(DataContent.ErrorData.EnterDepartmentId);

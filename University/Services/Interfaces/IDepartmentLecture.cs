@@ -5,7 +5,7 @@ namespace University.Services.Interfaces
 {
     public interface IDepartmentLecture
     {
-        internal DepartmentLecture Create(UniversityContext db);
+        internal DepartmentLecture Create(UniversityContext db, int depId, int lektId);
         internal DepartmentLecture Update(UniversityContext db);
     }
 }

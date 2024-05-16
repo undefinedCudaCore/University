@@ -47,14 +47,12 @@ namespace University.Services
                 return new Department();
             }
 
-            //Add lectures to department
-
-            //Add students to department
-
-
             var department = new Department() { /*DepartmentId = depId, */DepartmentName = depName };
             db.Departments.Add(department);
             db.SaveChanges();
+
+            //Add lectures to department
+            Update(db, depId);
 
             showContent.PrintContent(DataContent.ServiceContent.RecordCreated, department.DepartmentId);
             Thread.Sleep(3000);
@@ -75,17 +73,105 @@ namespace University.Services
             return false;
         }
 
-        public Department Update(UniversityContext db)
+        public void Update(UniversityContext db)
         {
-            //IShowContent showContent = new ShowContentService();
+            IShowContent showContent = new ShowContentService();
+            IDepartmentLecture departmentLecture = new DepartmentLectureService();
 
-            //showContent.PrintContent(DataContent.ServiceContent.EnterDepId);
-            //CheckInputHelper.CheckInput(out int depId);
+            showContent.PrintContent(DataContent.ServiceContent.EnterDepId);
+            CheckInputHelper.CheckInput(out int depId);
 
-            //showContent.PrintContent(DataContent.ServiceContent.EnterDepName);
-            //string depName = Console.ReadLine();
+            //Add check for department ID;
+            if (!CheckIfExists(db, depId))
+            {
+                showContent.PrintContent(DataContent.ErrorData.DepartmentAlredyExists);
+                showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                Thread.Sleep(3000);
+                RedirectTo.MainMenu();
+            }
 
-            return new Department();
+            while (true)
+            {
+                showContent.PrintContent(DataContent.ServiceContent.EnterConsent);
+                string addLectures = Console.ReadLine();
+
+                if (addLectures.ToLower() == "yes")
+                {
+                    showContent.ShowAllLectures(db);
+                    showContent.PrintContent(DataContent.ServiceContent.EnterLectureId);
+
+                    var input = Console.ReadLine();
+                    CheckInputHelper.ConvertInputToInt(input, out bool isNumeric);
+
+                    if (!isNumeric)
+                    {
+                        showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                        Thread.Sleep(3000);
+                        RedirectTo.MainMenu();
+                        break;
+                    }
+
+                    CheckInputHelper.CheckInput(input, out int lectId);
+
+                    departmentLecture.Create(db, depId, lectId);
+                }
+
+                if (addLectures.ToLower() != "yes")
+                {
+                    showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                    Thread.Sleep(3000);
+                    RedirectTo.MainMenu();
+                }
+            }
+        }
+
+        public void Update(UniversityContext db, int depId)
+        {
+            IShowContent showContent = new ShowContentService();
+            IDepartmentLecture departmentLecture = new DepartmentLectureService();
+
+            //Add check for department ID;
+            if (!CheckIfExists(db, depId))
+            {
+                showContent.PrintContent(DataContent.ErrorData.DepartmentAlredyExists);
+                showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                Thread.Sleep(3000);
+                RedirectTo.MainMenu();
+            }
+
+            while (true)
+            {
+                showContent.PrintContent(DataContent.ServiceContent.EnterConsent);
+                string addLectures = Console.ReadLine();
+
+                if (addLectures.ToLower() == "yes")
+                {
+                    showContent.ShowAllLectures(db);
+                    showContent.PrintContent(DataContent.ServiceContent.EnterLectureId);
+
+                    var input = Console.ReadLine();
+                    CheckInputHelper.ConvertInputToInt(input, out bool isNumeric);
+
+                    if (!isNumeric)
+                    {
+                        showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                        Thread.Sleep(3000);
+                        RedirectTo.MainMenu();
+                        break;
+                    }
+
+                    CheckInputHelper.CheckInput(input, out int lectId);
+
+                    departmentLecture.Create(db, depId, lectId);
+                }
+
+                if (addLectures.ToLower() != "yes")
+                {
+                    showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                    Thread.Sleep(3000);
+                    RedirectTo.MainMenu();
+                }
+            }
         }
     }
 }

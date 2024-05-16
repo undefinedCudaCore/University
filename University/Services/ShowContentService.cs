@@ -18,7 +18,7 @@ namespace University.Services
 
             Console.WriteLine($"Please select action ({DataContent.ErrorData.EnterSelection}):");
             Console.WriteLine("1. Create department.");
-            Console.WriteLine("2. Add student/lecture to department.");
+            Console.WriteLine("2. Add lecture to department.");
             Console.WriteLine("3. Create a lecture.");
             Console.WriteLine("4. Create student.");
             Console.WriteLine("5. Move student to other department.");

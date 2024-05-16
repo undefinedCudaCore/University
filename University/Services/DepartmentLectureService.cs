@@ -6,9 +6,14 @@ namespace University.Services
 {
     internal class DepartmentLectureService : IDepartmentLecture
     {
-        public DepartmentLecture Create(UniversityContext db)
+        public DepartmentLecture Create(UniversityContext db, int depId, int lektId)
         {
-            throw new NotImplementedException();
+            var departmentLecture = new DepartmentLecture() { DepartmentId = depId, LectureId = lektId };
+
+            db.DepartmentLectures.Add(departmentLecture);
+            db.SaveChanges();
+
+            return departmentLecture;
         }
 
         public DepartmentLecture Update(UniversityContext db)
