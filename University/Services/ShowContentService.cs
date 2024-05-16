@@ -168,7 +168,7 @@ namespace University.Services
         {
             Console.Clear();
             studentService.GetAll(db)
-                .ForEach(s => Console.WriteLine($"Department: {s.StudentId} - {s.StudentName} {s.StudentLastname}"));
+                .ForEach(s => Console.WriteLine($"Student: {s.StudentId} - {s.StudentName} {s.StudentLastname}"));
 
         }
     }

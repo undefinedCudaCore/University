@@ -38,7 +38,7 @@ namespace University.Services
             string depName = Console.ReadLine();
 
             //Add check for department ID;
-            if (!CheckIfExists(db, depId))
+            if (CheckIfExists(db, depId))
             {
                 showContent.PrintContent(DataContent.ErrorData.DepartmentAlredyExists);
                 showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
@@ -47,7 +47,12 @@ namespace University.Services
                 return new Department();
             }
 
-            var department = new Department() { DepartmentId = depId, DepartmentName = depName };
+            //Add lectures to department
+
+            //Add students to department
+
+
+            var department = new Department() { /*DepartmentId = depId, */DepartmentName = depName };
             db.Departments.Add(department);
             db.SaveChanges();
 
