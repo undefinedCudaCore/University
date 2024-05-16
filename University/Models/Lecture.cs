@@ -5,6 +5,16 @@ namespace University.Models
     [Table("Lecture")]
     internal class Lecture
     {
+        public Lecture()
+        {
+        }
+
+        public Lecture(int lectureId, string lectureName)
+        {
+            LectureId = lectureId;
+            LectureName = lectureName;
+        }
+
         public int LectureId { get; set; }
         public string LectureName { get; set; }
 

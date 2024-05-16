@@ -4,22 +4,34 @@ using University.Services.Interfaces;
 
 namespace University.Services
 {
-    internal class StudentService : IManageData, IMoveData
+    internal class StudentService : IStudent
     {
-        private void Get(UniversityContext db)
+        public Student Get(UniversityContext db, int studId)
         {
+            var students = db.Students
+                .Where(b => b.StudentId == studId)
+                .ToList();
+
+            return students[0];
         }
-        public void Create(UniversityContext db)
+        public List<Student> GetAll(UniversityContext db)
+        {
+            var students = db.Students
+                .ToList();
+
+            return students;
+        }
+        public Student Create(UniversityContext db)
         {
             throw new NotImplementedException();
         }
 
-        public void Move(UniversityContext db, Student student)
+        public Student Move(UniversityContext db, Student student, int depId)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(UniversityContext db)
+        public Student Update(UniversityContext db)
         {
             throw new NotImplementedException();
         }

@@ -10,6 +10,19 @@
             internal static readonly string EnterSelection = "Type your selection and press ENTER:";
             internal static readonly string EnterDepartmentId = "Type department ID and press ENTER:";
             internal static readonly string EnterStudentId = "Type student ID and press ENTER:";
+            internal static readonly string DepartmentAlredyExists = "You can't create a new department, department already exists.";
+            internal static readonly string LectureAlredyExists = "You can't create a new lecture, lecture already exists.";
+        }
+
+        internal static class ServiceContent
+        {
+            internal static readonly string EnterDepId = "Enter Department ID:";
+            internal static readonly string EnterLectId = "Enter Lecture ID:";
+            internal static readonly string EnterDepName = "Enter Department name:";
+            internal static readonly string RecordCreated = "Record created successfuly with ID ";
+            internal static readonly string EnterConsent = "Type 'YES' if you want add lectures press ENTER:";
+            internal static readonly string EnterLectureId = "Type lecture ID and press ENTER:";
+
         }
     }
 }
