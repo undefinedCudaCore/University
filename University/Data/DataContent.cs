@@ -10,6 +10,15 @@
             internal static readonly string EnterSelection = "Type your selection and press ENTER:";
             internal static readonly string EnterDepartmentId = "Type department ID and press ENTER:";
             internal static readonly string EnterStudentId = "Type student ID and press ENTER:";
+            internal static readonly string DepartmentAlredyExists = "You can't create a new department, department already exists.";
+        }
+
+        internal static class ServiceContent
+        {
+            internal static readonly string EnterDepId = "Enter Department ID:";
+            internal static readonly string EnterDepName = "Enter Department name:";
+            internal static readonly string RecordCreated = "Record created successfuly with ID ";
+
         }
     }
 }

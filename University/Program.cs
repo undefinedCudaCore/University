@@ -24,10 +24,9 @@ namespace University
 
                 while (cycle)
                 {
-                    IManageData departmenService = new DepartmentService();
-                    IManageData lectureService = new LectureService();
-                    IManageData studentService = new StudentService();
-                    IMoveData studentServiceToMove = new StudentService();
+                    IDepartment departmenService = new DepartmentService();
+                    ILecture lectureService = new LectureService();
+                    IStudent studentService = new StudentService();
                     IShowContent showContent = new ShowContentService();
                     showContent.ShowMainMenu();
 
@@ -36,6 +35,7 @@ namespace University
                     switch (option)
                     {
                         case "1":
+                            showContent.ShowAllDepartments(db);
                             departmenService.Create(db);
                             break;
                         case "2":
@@ -48,20 +48,23 @@ namespace University
                             studentService.Create(db);
                             break;
                         case "5":
-                            studentServiceToMove.Move(db, new Student());
+                            studentService.Move(db, new Student(), 3);
                             break;
                         case "6":
                             showContent.PrintContent(DataContent.ErrorData.EnterDepartmentId);
+                            showContent.ShowAllDepartments(db);
                             CheckInputHelper.CheckInput(out newInput);
                             showContent.ShowStudentsOfDepartment(db, newInput, out cycle);
                             break;
                         case "7":
                             showContent.PrintContent(DataContent.ErrorData.EnterDepartmentId);
+                            showContent.ShowAllDepartments(db);
                             CheckInputHelper.CheckInput(out newInput);
                             showContent.ShowLecturesOfDepartment(db, newInput, out cycle);
                             break;
                         case "8":
                             showContent.PrintContent(DataContent.ErrorData.EnterStudentId);
+                            showContent.ShowAllStudents(db);
                             CheckInputHelper.CheckInput(out newInput);
                             showContent.ShowStudentLectures(db, newInput, out cycle);
                             break;

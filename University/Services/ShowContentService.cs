@@ -8,6 +8,10 @@ namespace University.Services
 {
     internal class ShowContentService : IShowContent
     {
+        IDepartment departmentService = new DepartmentService();
+        ILecture lectureService = new LectureService();
+        IStudent studentService = new StudentService();
+
         public void ShowMainMenu()
         {
             Console.Clear();
@@ -121,8 +125,9 @@ namespace University.Services
                 .Where(b => b.StudentId == studId)
                 .ToList();
 
-            Console.WriteLine($"Student ID: {lectureStudents[studId - 1].Student.StudentId}");
-            Console.WriteLine($"Student name: {lectureStudents[studId - 1].Student.StudentName}");
+            Console.WriteLine($"Student ID: {studentService.Get(db, studId).StudentId}");
+            Console.WriteLine($"Student name: {studentService.Get(db, studId).StudentName} {studentService.Get(db, studId).StudentLastname}");
+
             foreach (var ls in lectureStudents)
             {
                 Console.WriteLine("---------------------------------------------------------");
@@ -139,6 +144,32 @@ namespace University.Services
         public void PrintContent(string content)
         {
             Console.WriteLine(content);
+        }
+
+        public void PrintContent(string content, int id)
+        {
+            Console.WriteLine(content + id);
+        }
+
+        public void ShowAllDepartments(UniversityContext db)
+        {
+            Console.Clear();
+            departmentService.GetAll(db)
+                .ForEach(d => Console.WriteLine($"Department: {d.DepartmentId} - {d.DepartmentName}"));
+        }
+        public void ShowAllLectures(UniversityContext db)
+        {
+            Console.Clear();
+            lectureService.GetAll(db)
+                .ForEach(l => Console.WriteLine($"Lecture: {l.LectureId} - {l.LectureName}"));
+
+        }
+        public void ShowAllStudents(UniversityContext db)
+        {
+            Console.Clear();
+            studentService.GetAll(db)
+                .ForEach(s => Console.WriteLine($"Department: {s.StudentId} - {s.StudentName} {s.StudentLastname}"));
+
         }
     }
 }
