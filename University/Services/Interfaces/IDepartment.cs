@@ -9,6 +9,7 @@ namespace University.Services.Interfaces
         internal void Update(UniversityContext db);
         internal void Update(UniversityContext db, int depId);
         internal Department Get(UniversityContext db, int depId);
+        internal bool CheckIfExists(UniversityContext db, int depId);
         internal List<Department> GetAll(UniversityContext db);
     }
 }
