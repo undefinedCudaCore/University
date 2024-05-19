@@ -6,6 +6,6 @@ namespace University.Services.Interfaces
     public interface ILectureStudent
     {
         internal LectureStudent Create(UniversityContext db);
-        internal LectureStudent Update(UniversityContext db);
+        internal LectureStudent Update(UniversityContext db, int depId, int studId);
     }
 }

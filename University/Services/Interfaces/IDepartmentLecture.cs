@@ -7,5 +7,6 @@ namespace University.Services.Interfaces
     {
         internal DepartmentLecture Create(UniversityContext db, int depId, int lektId);
         internal DepartmentLecture Update(UniversityContext db);
+        internal List<DepartmentLecture> GetAll(UniversityContext db, int depId);
     }
 }

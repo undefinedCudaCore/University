@@ -32,7 +32,7 @@ namespace University.Services
             showContent.PrintContent(DataContent.ServiceContent.EnterLectId);
             CheckInputHelper.CheckInput(out int lectId);
 
-            showContent.PrintContent(DataContent.ServiceContent.EnterDepName);
+            showContent.PrintContent(DataContent.ServiceContent.EnterLectName);
             string lectName = Console.ReadLine();
 
             //Add check for lecture ID;
@@ -61,7 +61,7 @@ namespace University.Services
             return lecture;
         }
 
-        private bool CheckIfExists(UniversityContext db, int lectId)
+        public bool CheckIfExists(UniversityContext db, int lectId)
         {
             var lecrute = db.Lectures.Find(lectId);
 

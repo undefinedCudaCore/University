@@ -10,5 +10,6 @@ namespace University.Services.Interfaces
 
         internal Lecture Get(UniversityContext db, int lectId);
         internal List<Lecture> GetAll(UniversityContext db);
+        internal bool CheckIfExists(UniversityContext db, int lectId);
     }
 }

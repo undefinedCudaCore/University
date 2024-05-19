@@ -14,9 +14,9 @@ namespace University.Services
         {
             var departments = db.Departments
                 .Where(b => b.DepartmentId == depId)
-                .ToList();
+                .FirstOrDefault();
 
-            return departments[0];
+            return departments;
         }
 
         public List<Department> GetAll(UniversityContext db)
@@ -35,7 +35,7 @@ namespace University.Services
             CheckInputHelper.CheckInput(out int depId);
 
             showContent.PrintContent(DataContent.ServiceContent.EnterDepName);
-            string depName = Console.ReadLine();
+            CheckInputHelper.CheckInput(out string depName);
 
             //Add check for department ID;
             if (CheckIfExists(db, depId))
@@ -61,7 +61,7 @@ namespace University.Services
             return department;
         }
 
-        private bool CheckIfExists(UniversityContext db, int depId)
+        public bool CheckIfExists(UniversityContext db, int depId)
         {
             var department = db.Departments.Find(depId);
 
