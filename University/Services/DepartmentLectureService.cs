@@ -20,5 +20,14 @@ namespace University.Services
         {
             throw new NotImplementedException();
         }
+
+        public List<DepartmentLecture> GetAll(UniversityContext db, int depId)
+        {
+            var departmentLectures = db.DepartmentLectures
+                .Where(dl => dl.DepartmentId == depId)
+                .ToList();
+
+            return departmentLectures;
+        }
     }
 }

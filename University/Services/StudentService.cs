@@ -69,6 +69,8 @@ namespace University.Services
             db.Students.Add(student);
             db.SaveChanges();
 
+            Update(db, depId, student.StudentId);
+
             showContent.PrintContent(DataContent.ServiceContent.RecordCreated, (int)student.DepartmentId);
             Thread.Sleep(3000);
             RedirectTo.MainMenu();
@@ -81,9 +83,22 @@ namespace University.Services
             throw new NotImplementedException();
         }
 
-        public Student Update(UniversityContext db)
+        public void Update(UniversityContext db, int depId, int studId)
         {
-            throw new NotImplementedException();
+            ILectureStudent lectureStudentService = new LectureStudentService();
+            lectureStudentService.Update(db, depId, studId);
+        }
+
+        public bool CheckIfExists(UniversityContext db, int studId)
+        {
+            var student = db.Students.Find(studId);
+
+            if (student != null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

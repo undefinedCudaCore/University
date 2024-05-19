@@ -47,7 +47,7 @@ namespace University
                             lectureService.Create(db);
                             break;
                         case "4":
-                            studentService.Create(db); // To do;
+                            studentService.Create(db);
                             break;
                         case "5":
                             studentService.Move(db, new Student(), 3); // To do;
