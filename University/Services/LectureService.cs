@@ -13,9 +13,9 @@ namespace University.Services
         {
             var lectures = db.Lectures
                 .Where(b => b.LectureId == lectId)
-                .ToList();
+                .FirstOrDefault();
 
-            return lectures[0];
+            return lectures;
         }
         public List<Lecture> GetAll(UniversityContext db)
         {
