@@ -13,9 +13,9 @@ namespace University.Services
         {
             var students = db.Students
                 .Where(b => b.StudentId == studId)
-                .ToList();
+                .FirstOrDefault();
 
-            return students[0];
+            return students;
         }
         public List<Student> GetAll(UniversityContext db)
         {
@@ -78,9 +78,39 @@ namespace University.Services
             return student;
         }
 
-        public Student Move(UniversityContext db, Student student, int depId)
+        public Student Move(UniversityContext db)
         {
-            throw new NotImplementedException();
+            IShowContent showContentService = new ShowContentService();
+            ILectureStudent lectureStudentService = new LectureStudentService();
+
+            showContentService.PrintContent(DataContent.ServiceContent.EnterStudentId);
+            CheckInputHelper.CheckInput(out int studId);
+            CheckObjectExists.CheckIfStudentExists(db, studId);
+
+            var student = Get(db, studId);
+
+            showContentService.PrintContent(DataContent.StudentServiceContent.EnterDepId);
+            CheckInputHelper.CheckInput(out int newDepId);
+            CheckObjectExists.CheckIfDepartmentExists(db, newDepId);
+
+            student.DepartmentId = newDepId;
+            db.Students.Update(student);
+
+            var lectureStudents = lectureStudentService.GetAll(db);
+
+            foreach (var ls in lectureStudents)
+            {
+                if (ls.StudentId == student.StudentId)
+                {
+                    db.LectureStudents.Remove(ls);
+                    db.SaveChanges();
+                }
+            }
+
+            lectureStudentService.Update(db, newDepId, studId);
+            db.SaveChanges();
+
+            return student;
         }
 
         public void Update(UniversityContext db, int depId, int studId)

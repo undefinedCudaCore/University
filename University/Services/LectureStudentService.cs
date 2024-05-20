@@ -9,6 +9,32 @@ namespace University.Services
 {
     internal class LectureStudentService : ILectureStudent
     {
+
+        public LectureStudent GetByLectureId(UniversityContext db, int lectId)
+        {
+            var lectureStudent = db.LectureStudents
+                .Where(b => b.LectureId == lectId)
+                .FirstOrDefault();
+
+            return lectureStudent;
+        }
+
+        public LectureStudent GetByStudentId(UniversityContext db, int studId)
+        {
+            var lectureStudent = db.LectureStudents
+                .Where(b => b.StudentId == studId)
+                .FirstOrDefault();
+
+            return lectureStudent;
+        }
+        public List<LectureStudent> GetAll(UniversityContext db)
+        {
+            var lectureStudents = db.LectureStudents
+                .ToList();
+
+            return lectureStudents;
+        }
+
         public LectureStudent Create(UniversityContext db)
         {
             Console.Clear();
@@ -23,7 +49,7 @@ namespace University.Services
 
             var lectureStudent = new LectureStudent() { LectureId = lectId, StudentId = studId };
 
-            CheckLectureAndStudentExists.CheckIfExists(db, lectId, studId);
+            CheckObjectExists.CheckIfStudentAndLectureExists(db, lectId, studId);
 
             db.LectureStudents.Add(lectureStudent);
             db.SaveChanges();
@@ -47,7 +73,7 @@ namespace University.Services
             {
                 if (dl.DepartmentId == depId)
                 {
-                    CheckLectureAndStudentExists.CheckIfExists(db, dl.LectureId, studId);
+                    CheckObjectExists.CheckIfStudentAndLectureExists(db, dl.LectureId, studId);
 
                     lectureStudent.LectureId = dl.LectureId;
                     lectureStudent.StudentId = studId;

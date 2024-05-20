@@ -1,7 +1,6 @@
 ﻿using University.Data;
 using University.Database;
 using University.Helpers;
-using University.Models;
 using University.Services;
 using University.Services.Interfaces;
 
@@ -50,7 +49,7 @@ namespace University
                             studentService.Create(db);
                             break;
                         case "5":
-                            studentService.Move(db, new Student(), 3); // To do;
+                            studentService.Move(db); // To do;
                             break;
                         case "6":
                             showContent.PrintContent(DataContent.ErrorData.EnterDepartmentId);

@@ -38,6 +38,7 @@
             internal static readonly string EnterWeight = "Type students Weight and press ENTER";
             internal static readonly string EnterGender = "Type students gender and press ENTER";
             internal static readonly string EnterDepartmentsIdForStudent = "Type departments ID and press ENTER";
+            internal static readonly string EnterDepId = "Enter the department ID to change:";
         }
     }
 }
