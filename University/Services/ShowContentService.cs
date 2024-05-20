@@ -25,6 +25,10 @@ namespace University.Services
             Console.WriteLine("6. Show all students of the department.");
             Console.WriteLine("7. Show all lectures of the department.");
             Console.WriteLine("8. Show all students lectures.");
+            Console.WriteLine("9. Type 'Q' to close process.");
+            Console.WriteLine("10. Type 'QUIT' to close process.");
+            Console.WriteLine("11. Type 'E' to exit process.");
+            Console.WriteLine("12. Type 'EXIT' to exit process.");
         }
 
         public void ShowStudentsOfDepartment(UniversityContext db, int depId, out bool cycle)
