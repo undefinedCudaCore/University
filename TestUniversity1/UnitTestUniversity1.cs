@@ -29,7 +29,7 @@ namespace TestUniversity1
         }
 
         [TestMethod]
-        public void TestDepartmentObjectCreateInDataBase()
+        public void TestDepartmentObjectDoesNotExistsInDataBase()
         {
             using (var db = new UniversityContext())
             {
