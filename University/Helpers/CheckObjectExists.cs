@@ -61,7 +61,7 @@ namespace University.Helpers
 
             if (!departmentService.CheckIfExists(db, depId))
             {
-                showContent.PrintContent(DataContent.ErrorData.StudentNotExists);
+                showContent.PrintContent(DataContent.ErrorData.DepartmentNotExists);
                 showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
                 Thread.Sleep(3000);
                 RedirectTo.MainMenu();
