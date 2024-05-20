@@ -49,7 +49,7 @@ namespace University
                             studentService.Create(db);
                             break;
                         case "5":
-                            studentService.Move(db); // To do;
+                            studentService.Move(db);
                             break;
                         case "6":
                             showContent.PrintContent(DataContent.ErrorData.EnterDepartmentId);

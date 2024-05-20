@@ -4,7 +4,7 @@ namespace University.Models
 {
     [Table("Department")]
 
-    internal class Department
+    public class Department
     {
         public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
@@ -16,8 +16,8 @@ namespace University.Models
         //public int? StudentId { get; set; }
         //public Student Student { get; set; }
 
-        public IList<Student> Students { get; set; } = new List<Student>();
+        internal IList<Student> Students { get; set; } = new List<Student>();
 
-        public IList<DepartmentLecture> DepartmentLectures { get; set; } = new List<DepartmentLecture>();
+        internal IList<DepartmentLecture> DepartmentLectures { get; set; } = new List<DepartmentLecture>();
     }
 }

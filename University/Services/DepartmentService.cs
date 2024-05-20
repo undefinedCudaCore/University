@@ -7,7 +7,7 @@ using University.Services.Interfaces;
 
 namespace University.Services
 {
-    internal class DepartmentService : IDepartment
+    public class DepartmentService : IDepartment
 
     {
         public Department Get(UniversityContext db, int depId)

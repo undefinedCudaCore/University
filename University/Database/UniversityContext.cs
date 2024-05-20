@@ -4,7 +4,7 @@ using University.Models;
 
 namespace University.Database
 {
-    internal class UniversityContext : DbContext
+    public class UniversityContext : DbContext
     {
         public UniversityContext()
         {
@@ -12,12 +12,12 @@ namespace University.Database
                 "Integrated Security=True;Encrypt=False";
         }
 
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Lecture> Lectures { get; set; }
-        public DbSet<Department> Departments { get; set; }
-        public DbSet<DepartmentLecture> DepartmentLectures { get; set; }
-        public DbSet<LectureStudent> LectureStudents { get; set; }
-        public string ConnectionString { get; }
+        internal DbSet<Student> Students { get; set; }
+        internal DbSet<Lecture> Lectures { get; set; }
+        internal DbSet<Department> Departments { get; set; }
+        internal DbSet<DepartmentLecture> DepartmentLectures { get; set; }
+        internal DbSet<LectureStudent> LectureStudents { get; set; }
+        internal string ConnectionString { get; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

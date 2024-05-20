@@ -6,7 +6,7 @@ using University.Services.Interfaces;
 
 namespace University.Services
 {
-    internal class ShowContentService : IShowContent
+    public class ShowContentService : IShowContent
     {
         IDepartment departmentService = new DepartmentService();
         ILecture lectureService = new LectureService();
