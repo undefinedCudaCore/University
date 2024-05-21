@@ -37,6 +37,8 @@ namespace University.Services
             showContent.PrintContent(DataContent.ServiceContent.EnterDepName);
             CheckInputHelper.CheckInput(out string depName);
 
+            CheckNameExists.IfDepartmentNameExists(db, depName);
+
             //Add check for department ID;
             if (CheckIfExists(db, depId))
             {

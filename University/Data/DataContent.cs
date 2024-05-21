@@ -12,6 +12,7 @@
             internal static readonly string EnterStudentId = "Type student ID and press ENTER:";
             internal static readonly string DepartmentAlredyExists = "You can't create a new department, department already exists.";
             internal static readonly string LectureAlredyExists = "You can't create a new lecture, lecture already exists.";
+            internal static readonly string StudentAlredyExists = "You can't create a new student, student already exists.";
             internal static readonly string DepartmentNotExists = "You can't create a new record, department does not exist.";
             internal static readonly string LectureNotExists = "You can't create a new record, lecture does not exist.";
             internal static readonly string StudentNotExists = "You can't create a new record, student does not exist.";

@@ -35,6 +35,8 @@ namespace University.Services
             showContent.PrintContent(DataContent.ServiceContent.EnterLectName);
             string lectName = Console.ReadLine();
 
+            CheckNameExists.IfLectNameExists(db, lectName);
+
             //Add check for lecture ID;
             if (CheckIfExists(db, lectId))
             {

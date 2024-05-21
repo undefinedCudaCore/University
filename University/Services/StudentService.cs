@@ -32,6 +32,7 @@ namespace University.Services
 
             showContent.PrintContent(DataContent.StudentServiceContent.EnterName);
             CheckInputHelper.CheckInput(out string name);
+            CheckNameExists.IfStudentNameExists(db, name);
             student.StudentName = name;
 
             showContent.PrintContent(DataContent.StudentServiceContent.EnterLastname);
@@ -71,7 +72,7 @@ namespace University.Services
 
             Update(db, depId, student.StudentId);
 
-            showContent.PrintContent(DataContent.ServiceContent.RecordCreated, (int)student.DepartmentId);
+            showContent.PrintContent(DataContent.ServiceContent.RecordCreated + "(department ID) ", (int)student.DepartmentId);
             Thread.Sleep(3000);
             RedirectTo.MainMenu();
 
