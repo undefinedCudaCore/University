@@ -49,7 +49,7 @@ namespace University.Services
 
             var lectureStudent = new LectureStudent() { LectureId = lectId, StudentId = studId };
 
-            CheckObjectExists.CheckIfStudentAndLectureExists(db, lectId, studId);
+            CheckObjectExistsHepler.CheckIfStudentAndLectureExists(db, lectId, studId);
 
             db.LectureStudents.Add(lectureStudent);
             db.SaveChanges();
@@ -73,7 +73,7 @@ namespace University.Services
             {
                 if (dl.DepartmentId == depId)
                 {
-                    CheckObjectExists.CheckIfStudentAndLectureExists(db, dl.LectureId, studId);
+                    CheckObjectExistsHepler.CheckIfStudentAndLectureExists(db, dl.LectureId, studId);
 
                     lectureStudent.LectureId = dl.LectureId;
                     lectureStudent.StudentId = studId;

@@ -32,7 +32,7 @@ namespace University.Services
 
             showContent.PrintContent(DataContent.StudentServiceContent.EnterName);
             CheckInputHelper.CheckInput(out string name);
-            CheckNameExists.IfStudentNameExists(db, name);
+            CheckNameExistsHelper.IfStudentNameExists(db, name);
             student.StudentName = name;
 
             showContent.PrintContent(DataContent.StudentServiceContent.EnterLastname);
@@ -86,13 +86,13 @@ namespace University.Services
 
             showContentService.PrintContent(DataContent.ServiceContent.EnterStudentId);
             CheckInputHelper.CheckInput(out int studId);
-            CheckObjectExists.CheckIfStudentExists(db, studId);
+            CheckObjectExistsHepler.CheckIfStudentExists(db, studId);
 
             var student = Get(db, studId);
 
             showContentService.PrintContent(DataContent.StudentServiceContent.EnterDepId);
             CheckInputHelper.CheckInput(out int newDepId);
-            CheckObjectExists.CheckIfDepartmentExists(db, newDepId);
+            CheckObjectExistsHepler.CheckIfDepartmentExists(db, newDepId);
 
             if (student.DepartmentId == newDepId)
             {

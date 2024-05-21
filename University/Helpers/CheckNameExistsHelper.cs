@@ -6,7 +6,7 @@ using University.Services.Interfaces;
 
 namespace University.Helpers
 {
-    internal static class CheckNameExists
+    internal static class CheckNameExistsHelper
     {
 
         public static void IfStudentNameExists(UniversityContext db, string studName)

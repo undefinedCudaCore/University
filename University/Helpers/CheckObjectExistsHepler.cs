@@ -6,7 +6,7 @@ using University.Services.Interfaces;
 
 namespace University.Helpers
 {
-    internal static class CheckObjectExists
+    internal static class CheckObjectExistsHepler
     {
         public static void CheckIfStudentAndLectureExists(UniversityContext db, int lectId, int studId)
         {
