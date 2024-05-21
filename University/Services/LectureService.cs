@@ -33,7 +33,7 @@ namespace University.Services
             CheckInputHelper.CheckInput(out int lectId);
 
             showContent.PrintContent(DataContent.ServiceContent.EnterLectName);
-            string lectName = Console.ReadLine();
+            string lectName = Console.ReadLine().Trim();
 
             CheckLength.InputLenthNotLongerThanFifty(lectName);
             CheckNameExistsHelper.IfLectNameExists(db, lectName);

@@ -52,7 +52,7 @@ namespace University.Helpers
                 RedirectTo.MainMenu();
             }
 
-            newInput = input;
+            newInput = input.Trim();
         }
 
         public static void CheckInput(out double newInput)

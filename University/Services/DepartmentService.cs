@@ -96,7 +96,7 @@ namespace University.Services
             while (true)
             {
                 showContent.PrintContent(DataContent.ServiceContent.EnterConsent);
-                string addLectures = Console.ReadLine();
+                string addLectures = Console.ReadLine().Trim();
 
                 if (addLectures.ToLower() == "yes")
                 {
@@ -145,7 +145,7 @@ namespace University.Services
             while (true)
             {
                 showContent.PrintContent(DataContent.ServiceContent.EnterConsent);
-                string addLectures = Console.ReadLine();
+                string addLectures = Console.ReadLine().Trim();
 
                 if (addLectures.ToLower() == "yes")
                 {
