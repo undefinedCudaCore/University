@@ -94,6 +94,14 @@ namespace University.Services
             CheckInputHelper.CheckInput(out int newDepId);
             CheckObjectExists.CheckIfDepartmentExists(db, newDepId);
 
+            if (student.DepartmentId == newDepId)
+            {
+                showContentService.PrintContent(DataContent.ErrorData.DepartmentIdBelongToStudent);
+                showContentService.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                Thread.Sleep(3000);
+                return student;
+            }
+
             student.DepartmentId = newDepId;
             db.Students.Update(student);
 
