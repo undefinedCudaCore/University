@@ -31,14 +31,6 @@ namespace University.Database
             {
                 entity.HasKey(d => d.DepartmentId);
 
-                //entity.HasOne(a => a.Lecture)
-                //    .WithMany(a => a.Departments)
-                //    .HasForeignKey(a => a.LectureId);
-
-                //entity.HasOne(a => a.Student)
-                //    .WithMany(a => a.Departments)
-                //    .HasForeignKey(a => a.StudentId);
-
                 entity.Property(d => d.DepartmentName)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -47,14 +39,6 @@ namespace University.Database
             modelBuilder.Entity<Lecture>(entity =>
             {
                 entity.HasKey(l => l.LectureId);
-
-                //entity.HasOne(b => b.Department)
-                //    .WithMany(b => b.Lectures)
-                //    .HasForeignKey(b => b.DepartmentId);
-
-                //entity.HasOne(b => b.Student)
-                //    .WithMany(b => b.Lectures)
-                //    .HasForeignKey(b => b.StudentId);
 
                 entity.Property(l => l.LectureName)
                     .IsRequired()
