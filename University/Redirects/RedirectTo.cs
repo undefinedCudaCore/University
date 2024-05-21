@@ -1,10 +1,12 @@
-﻿namespace University.Redirects
+﻿using University.Windows;
+
+namespace University.Redirects
 {
     internal static class RedirectTo
     {
         public static void MainMenu()
         {
-            Program.OutsetProgram();
+            MainWindow.OutsetProgram();
         }
     }
 }
