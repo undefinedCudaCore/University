@@ -16,6 +16,7 @@
             internal static readonly string DepartmentNotExists = "You can't create a new record, department does not exist.";
             internal static readonly string LectureNotExists = "You can't create a new record, lecture does not exist.";
             internal static readonly string StudentNotExists = "You can't create a new record, student does not exist.";
+            internal static readonly string InputTooLong = "You can't create a new record, input have more than 50 symbols.";
             internal static readonly string DepartmentIdBelongToStudent = "You can't move student to another department, department alredy assigned to student.";
         }
 

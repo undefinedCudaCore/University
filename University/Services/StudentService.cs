@@ -33,10 +33,12 @@ namespace University.Services
             showContent.PrintContent(DataContent.StudentServiceContent.EnterName);
             CheckInputHelper.CheckInput(out string name);
             CheckNameExistsHelper.IfStudentNameExists(db, name);
+            CheckLength.InputLenthNotLongerThanFifty(name);
             student.StudentName = name;
 
             showContent.PrintContent(DataContent.StudentServiceContent.EnterLastname);
             CheckInputHelper.CheckInput(out string lastname);
+            CheckLength.InputLenthNotLongerThanFifty(lastname);
             student.StudentLastname = lastname;
 
             showContent.PrintContent(DataContent.StudentServiceContent.EnterAge);
@@ -53,6 +55,7 @@ namespace University.Services
 
             showContent.PrintContent(DataContent.StudentServiceContent.EnterGender);
             CheckInputHelper.CheckInput(out string gender);
+            CheckLength.InputLenthNotLongerThanFifty(gender);
             student.StudentGender = gender;
 
             showContent.PrintContent(DataContent.StudentServiceContent.EnterDepartmentsIdForStudent);
